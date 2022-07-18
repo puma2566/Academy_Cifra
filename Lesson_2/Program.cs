@@ -4,10 +4,9 @@
     {
         static void Main(string[] args)
         {
-            //Отрисовка массива.
-            Console.WriteLine("Tic-Tac-Toe");
-            char[,] mass = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };          
-            int player = 1;
+            char[,] mass = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9'
+
+} };
             for (byte i = 0; i < 3; i++)
             {
                 for (byte j = 0; j < 3; j++)
@@ -16,31 +15,56 @@
 
                     if (i != -1 && j != -1)
                     {
-                        Console.Write("|");   
+                        Console.Write("|");
                     }
                 }
                 Console.Write("\n");
             }
-            // Сама игра.
-            for (byte k = 0; k < 10; k++)
+
+            int player = 1;
+
+            //Создание метода
+            void game(char v, int z, int c)
             {
-                if (player % 2 != 0)
+                if (mass[z, c] == 'X' | mass[z, c] == '0')
                 {
-                    Console.WriteLine("Ход первого игрока: ");
+                    Console.WriteLine("Ячейка занята");
                 }
                 else
                 {
-                    Console.WriteLine("Ход второго игрока: ");
+                    mass[z, c] = v;
+                    player++;
                 }
+
+                for (byte i = 0; i < 3; i++)
+                {
+                    for (byte j = 0; j < 3; j++)
+                    {
+                        Console.Write($"_{mass[i, j]}_");
+
+                        if (i != -1 && j != -1)
+                        {
+                            Console.Write("|");
+                        }
+                    }
+                    Console.Write("\n");
+                }
+                return;
+            }
+
+
+            // Игровой цикл
+            for (byte k = 0; k < 10; k++)
+            {
 
                 string? y = Console.ReadLine();
                 int x = Convert.ToInt32(y);
-
                 if (x < 1 || x > 9)
                 {
                     Console.WriteLine("Не верная ячейка");
                 }
-                
+
+
                 //Игрок 1
                 if (player % 2 != 0)
 
@@ -48,439 +72,73 @@
                     switch (x)
                     {
                         case 1:
-                            if (mass[0, 0] == 'X' | mass[0, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 0] = 'X';
-                                player++;
-                            }
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                    {
-                                        Console.Write("|");
-                                    }
-                                }
-                                Console.Write("\n");
-                            }
-                             break;
-
+                            game('X', 0, 0);
+                            break;
                         case 2:
-                            if (mass[0, 1] == 'X' | mass[0, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 1] = 'X';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 0, 1);
                             break;
-
                         case 3:
-                            if (mass[0, 2] == 'X' | mass[0, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 2] = 'X';
-                                player++;
-                            }
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 0, 2);
                             break;
-
                         case 4:
-                            if (mass[1, 0] == 'X' | mass[1, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 0] = 'X';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 1, 0);
                             break;
-
                         case 5:
-                            if (mass[1, 1] == 'X' | mass[1, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 1] = 'X';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 1, 1);
                             break;
-
                         case 6:
-                            if (mass[1, 2] == 'X' | mass[1, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 2] = 'X';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 1, 2);
                             break;
-
                         case 7:
-                            if (mass[2, 0] == 'X' | mass[2, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 0] = 'X';
-                                player++;
-                            }
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 2, 0);
                             break;
-
                         case 8:
-                            if (mass[2, 1] == 'X' | mass[2, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 1] = 'X';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('X', 2, 1);
                             break;
-
                         case 9:
-                            if (mass[2, 2] == 'X' | mass[2, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 2] = 'X';
-                                player++;
-                            }
+                            game('X', 2, 2);
+                            break;
+                    }
+                }
 
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
+                //Игрое 2
 
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
-                            break;      
-                    }                   
-                }                
-                //Игрок_2
                 else
-                if (player % 2 == 0)
                 {
-                   
+                    Console.WriteLine("Ход игрока 2");
                     switch (x)
                     {
-
                         case 1:
-                            if (mass[0, 0] == 'X' | mass[0, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 0] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 0, 0);
                             break;
-
                         case 2:
-                            if (mass[0, 1] == 'X' | mass[0, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 1] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 0, 1);
                             break;
                         case 3:
-                            if (mass[0, 2] == 'X' | mass[0, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[0, 2] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 0, 2);
                             break;
                         case 4:
-                            if (mass[1, 0] == 'X' | mass[1, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 0] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 1, 0);
                             break;
                         case 5:
-                            if (mass[1, 1] == '0' | mass[1, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 1] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 1, 1);
                             break;
                         case 6:
-                            if (mass[1, 2] == 'X' | mass[1, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[1, 2] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 1, 2);
                             break;
                         case 7:
-                            if (mass[2, 0] == 'X' | mass[2, 0] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 0] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 2, 0);
                             break;
                         case 8:
-                            if (mass[2, 1] == 'X' | mass[2, 1] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 1] = '0';
-                                player++;
-                            }
-
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
+                            game('0', 2, 1);
                             break;
                         case 9:
-                            if (mass[2, 2] == 'X' | mass[2, 2] == '0')
-                            {
-                                Console.WriteLine("Ячейка занята");
-                            }
-                            else
-                            {
-                                mass[2, 2] = '0';
-                                player++;
-                            }
+                            game('0', 2, 2);
+                            break;
+                    }
 
-                            for (byte i = 0; i < 3; i++)
-                            {
-                                for (byte j = 0; j < 3; j++)
-                                {
-                                    Console.Write($"_{mass[i, j]}_");
-
-                                    if (i != -1 && j != -1)
-                                        Console.Write("|");
-                                }
-                                Console.Write("\n");
-                            }
-                            break;      
-                    } 
                 }
+
                 if (mass[0, 0] == 'X' && mass[0, 1] == 'X' && mass[0, 2] == 'X' ||
                     mass[1, 0] == 'X' && mass[1, 1] == 'X' && mass[1, 2] == 'X' ||
                     mass[2, 0] == 'X' && mass[2, 1] == 'X' && mass[2, 2] == 'X' ||
@@ -491,18 +149,21 @@
                     mass[0, 0] == 'X' && mass[1, 1] == 'X' && mass[2, 2] == 'X')
 
                     Console.WriteLine("Выиграли: Х");
-                
-                 if (mass[0, 0] == '0' && mass[0, 1] == '0' && mass[0, 2] == '0' ||
-                     mass[1, 0] == '0' && mass[1, 1] == '0' && mass[1, 2] == '0' ||
-                     mass[2, 0] == '0' && mass[2, 1] == '0' && mass[2, 2] == '0' ||
-                     mass[0, 0] == '0' && mass[1, 0] == '0' && mass[2, 0] == '0' ||
-                     mass[0, 1] == '0' && mass[1, 1] == '0' && mass[2, 1] == '0' ||
-                     mass[0, 2] == '0' && mass[1, 2] == '0' && mass[2, 2] == '0' ||
-                     mass[2, 0] == '0' && mass[1, 1] == '0' && mass[0, 2] == '0' ||
-                     mass[0, 0] == '0' && mass[1, 1] == '0' && mass[2, 2] == '0')
 
-                     Console.WriteLine("Выиграли: 0");
+                if (mass[0, 0] == '0' && mass[0, 1] == '0' && mass[0, 2] == '0' ||
+                    mass[1, 0] == '0' && mass[1, 1] == '0' && mass[1, 2] == '0' ||
+                    mass[2, 0] == '0' && mass[2, 1] == '0' && mass[2, 2] == '0' ||
+                    mass[0, 0] == '0' && mass[1, 0] == '0' && mass[2, 0] == '0' ||
+                    mass[0, 1] == '0' && mass[1, 1] == '0' && mass[2, 1] == '0' ||
+                    mass[0, 2] == '0' && mass[1, 2] == '0' && mass[2, 2] == '0' ||
+                    mass[2, 0] == '0' && mass[1, 1] == '0' && mass[0, 2] == '0' ||
+                    mass[0, 0] == '0' && mass[1, 1] == '0' && mass[2, 2] == '0')
+
+                    Console.WriteLine("Выиграли: 0");
+
+
             }
+
         }
     }
 }
