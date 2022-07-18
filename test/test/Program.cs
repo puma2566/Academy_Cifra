@@ -3,8 +3,8 @@
     internal class Program
     {
         static void Main(string[] args)
-        {
-            char[,] mass = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9'} };
+        {   
+            char[,] mass = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };         
             for (byte i = 0; i < 3; i++)
             {
                 for (byte j = 0; j < 3; j++)
@@ -13,7 +13,7 @@
 
                     if (i != -1 && j != -1)
                     {
-                        Console.Write("|");
+                        Console.Write("|");                       
                     }
                 }
                 Console.Write("\n");
@@ -49,32 +49,24 @@
                 }
                 return;
             }
-
+            
 
             // Игровой цикл
             for (byte k = 0; k < 10; k++)
             {
-                if (player % 2 != 0)
-                {
-                    Console.WriteLine("Ход игрока 1");
-                }
-                else
-                {
-                    Console.WriteLine("Ход игрока 2");
-                }
+               
                 string? y = Console.ReadLine();
                 int x = Convert.ToInt32(y);
-                
                 if (x < 1 || x > 9)
                 {
                     Console.WriteLine("Не верная ячейка");
                 }
 
+
                 //Игрок 1
                 if (player % 2 != 0)
 
                 {
-                    
                     switch (x)
                     {
                         case 1:
@@ -111,7 +103,7 @@
 
                 else
                 {
-                    
+                    Console.WriteLine("Ход игрока 2");
                     switch (x)
                     {
                         case 1:
@@ -169,7 +161,7 @@
 
 
             }
-
+              
         }
     }
 }
