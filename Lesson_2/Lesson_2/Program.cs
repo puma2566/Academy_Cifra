@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             //Отрисовка массива.
-            Console.WriteLine("TikTacToe");
+            Console.WriteLine("Tic-Tac-Toe");
             char[,] mass = new char[3, 3] { { '1', '2', '3' }, { '4', '5', '6' }, { '7', '8', '9' } };          
             int player = 1;
             for (byte i = 0; i < 3; i++)
