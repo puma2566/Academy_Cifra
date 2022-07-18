@@ -56,19 +56,27 @@
             // Игровой цикл
             for (byte k = 0; k < 10; k++)
             {
-
+                if (player % 2 != 0)
+                {
+                    Console.WriteLine("Ход игрока 1");
+                }
+                else
+                {
+                    Console.WriteLine("Ход игрока 2");
+                }
                 string? y = Console.ReadLine();
                 int x = Convert.ToInt32(y);
+                
                 if (x < 1 || x > 9)
                 {
                     Console.WriteLine("Не верная ячейка");
                 }
 
-
                 //Игрок 1
                 if (player % 2 != 0)
 
                 {
+                    
                     switch (x)
                     {
                         case 1:
@@ -105,7 +113,7 @@
 
                 else
                 {
-                    Console.WriteLine("Ход игрока 2");
+                    
                     switch (x)
                     {
                         case 1:
