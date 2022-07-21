@@ -44,7 +44,7 @@
                     Games('0', w, mass);
                 }
                 else
-                {                   
+                {
                     Games('X', w, mass);
                 }
                 if (
@@ -108,4 +108,3 @@
         }
     }
 }
-
